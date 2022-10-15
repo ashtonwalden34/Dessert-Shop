@@ -17,7 +17,7 @@ def newIceCream():
   return IceCream("test Ice Cream", 3, 1.00)
 
 def newSundae():
-  return Sundae("test", "test Sundae Topping", 2.00)
+  return Sundae("test", 2, 1.50, "test Sundae Topping", 2.00)
 
 def test_Candy():
   # assert newCandy().name == "new Candy"
@@ -35,5 +35,7 @@ def test_IceCream():
   assert newIceCream().price_per_scoop == 1.00
 
 def test_Sundae():
+  assert newSundae().scoop_count == 2
+  assert newSundae().price_per_scoop == 1.50
   assert newSundae().topping_name == "test Sundae Topping"
   assert newSundae().topping_price == 2.00

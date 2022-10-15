@@ -20,8 +20,10 @@ class IceCream(DessertItem):
         self.price_per_scoop = price_per_scoop
         print(f"{self.scoop_count}s at ${self.price_per_scoop} per scoop.")
 class Sundae(DessertItem):
-    def __init__(self, name, topping_name = "", topping_price = 0.0):
+    def __init__(self, name, scoop_count, price_per_scoop, topping_name = "", topping_price = 0.0):
         super().__init__(name)
+        self.scoop_count = scoop_count
+        self.price_per_scoop = price_per_scoop
         self.topping_name = topping_name
         self.topping_price = topping_price
         print(f"{self.topping_name} costs ${self.topping_price}.")

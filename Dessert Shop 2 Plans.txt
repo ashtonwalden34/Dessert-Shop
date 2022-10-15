@@ -1,0 +1,41 @@
+- Add the ability to create an order of items from the dessert shop
+
+- Add a main function that adds the beginnings of a console user interface to test the order entry system
+
+-----------------------------------------------------
+
+> Add one new class and a main function
+
+- Order Class	
+	- list of DessertItem
+	- default constructor 
+		> takes no arguments
+		> instantiates the order instance 
+			variable to a new list of 
+			DessertItem
+		> add() method takes a single 
+			DessertItem and adds to order list
+		> item_count() method takes no params
+			and returns the size of the order
+
+- dessertshop.py
+	> contains main and imports any other files
+		needed to run application
+
+- main()
+	> create a new instance of the order class
+	> Add the following:
+		- Candy("Candy Corn", 1.5, .25)
+		- Candy("Gummy Bears", .25, .35)
+		- Cookie("Chocolate Chip", 6, 3.99)
+		- IceCream("Pistachio", 2, .79)
+		- Sundae("Vanilla", 3, .69, "Hot Fudge", 
+			1.29)
+		- Cookie("Oatmeal Raisin", 2, 3.45)
+	> print out just the name of each DessertItem
+		in order
+	> Print out the total number of items in order
+
+-----------------------------------------------------
+
+- Fix the sundae function to take IceCream input

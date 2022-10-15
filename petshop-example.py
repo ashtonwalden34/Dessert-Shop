@@ -64,19 +64,16 @@ class Animal(ABC):
     '''
     def __init__(self,name):
         self.name = name
-
     def eat(self):
         '''
             Note that self.diet below actually retrieves type(self).diet
         '''
         print(self.name,'eating',self.diet)
-
     def __str__(self):
         '''
             Note how we get the class name with type and __name__.
         '''
         return type(self).__name__ + ": " + self.name
-        
 class Mammal(Animal):
     pass
 class Cat(Mammal):
@@ -107,6 +104,8 @@ class Koi(Fish):
     diet = 'algae'
 class Guppy(Fish):
     diet = 'flakes'
+
+
 store = PetStore(1)
 store.add_pet(Guppy('Gus'))
 store.add_pet(Newt('Tiny'))
