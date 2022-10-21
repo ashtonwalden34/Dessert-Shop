@@ -1,0 +1,87 @@
+- Calculate the cost of any dessert item 
+	with Tax
+
+- Order class can calculate the cost of all
+	items in order with tax
+
+--------------------------------------------
+
+DessertItem Class
+	- make it abstract class
+	- add attribute tax_percent = 7.25
+	- abstract method calculate_cost()
+	- calculate_tax() that calculates and
+		returns tax for the item
+
+
+All Dessert Classes
+(Candy, Cookie, IceCream, Sundae)
+	- calculate_cost method overrides the
+		superclass method and returns
+		the correct cost of the item
+	- Sundae cost = topping + ice cream
+
+
+Order Class
+	- order_cost() method calculates and
+		returns the total cost of all
+		items in the order
+	- order_tax() calculates and returns
+		the total tax for all items
+		in the order
+
+
+dessertshop module
+	- loop to main prints out: 
+		> name of dessert
+		> cost of each item
+		> tax for each item
+	- print out subtotal of all items in
+		the order and the total tax
+		for the order
+	- print out the total cost of the
+		order (subtotal + total tax)
+	- print out the total number of items
+		in the order
+	- use f-strings to print values in 
+		nice tabular format
+
+
+Test cases
+	- Use an instance of the Candy class
+		since DessertItem is now an 
+		abstract class
+	- Add new test cases to DessertItem
+		test code to test the 
+		tax_percent attribute
+	- Add new test cases to test method
+		calculate_cost for each dessert
+		subclass
+	- Add new test cases to test 
+		superclass method calculate_tax
+		for each dessert subclass
+
+
+--------------------------------------------
+
+Abstract class
+---------------
+
+- DessertItems
+	> name
+	> cost
+	> quantity
+
+	> add tax_percent = 7.25
+	> add abstract method calculate_cost()
+	> add abstract method calculate_tax()
+
+
+
+
+
+
+
+
+
+
