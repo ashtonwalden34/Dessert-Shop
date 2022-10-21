@@ -63,18 +63,38 @@ Test cases
 
 
 --------------------------------------------
+Done - Order Class
+	Done > order_cost() = subtotal cost of 
+			order
+	Done > order_tax() = total tax of 
+			order
 
-Abstract class
----------------
+- dessertshop
+	Done > loop in main that prints:
+		i. name
+		ii. cost of each item
+		iii. tax of each item
+	Done > print subtotal of all items
+	Done > print total tax of all items
 
-- DessertItems
-	> name
-	> cost
-	> quantity
 
-	> add tax_percent = 7.25
-	> add abstract method calculate_cost()
-	> add abstract method calculate_tax()
+
+10/21 - Final To Do
+===========================================
+- dessert shop
+	> print total number of items
+	> format with f-strings
+
+- Test cases
+	> Instance of Candy class instead of 
+		DessertItem, since it is now an
+		abstract class
+	> new test case to DessertItem for 
+		tax_percent
+	> new test cases for each subclass to 
+		test calculate_cost and 
+		calculate_tax
+	
 
 
 

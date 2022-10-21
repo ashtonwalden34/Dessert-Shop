@@ -113,8 +113,24 @@ class Order():
         return self.get_by_type(DessertItem)
     def get_by_type(self, typ):
         return[dessert_item for dessert_item in self.order if isinstance(dessert_item, typ)]
-    
-   
+    def order_cost(self):
+        subtotal = 0.00
+        for index in range(len(self.order)):
+            subtotal += self.order[index].calculate_cost()
+            # print(f'"test cost index loop thingy" ${subtotal}')
+        print("%.2f" % subtotal)
+        return subtotal
+    def order_tax(self):
+        taxes = 0.00
+        for index in range(len(self.order)):
+            taxes += self.order[index].calculate_tax()
+            # print(f'"test cost index loop thingy" ${subtotal}')
+        # print("%.2f" % taxes)
+        return taxes
+    def get_length(self):
+        length = len(self.order)
+        return(length)
+
 
 def main():
     order = Order()
@@ -125,9 +141,17 @@ def main():
     order.add_dessert(Sundae("Vanilla", 3, .69, "Hot Fudge", 1.29))
     order.add_dessert(Cookie("Oatmeal Raisin", 2, 3.45))
 
+    # cost = dessert_item.calculate_cost()
+    # tax = dessert_item.calculate_tax()
+
     for dessert_item in order.get_dessert():
         # print(f'{dessert_item.name} Cost: ${dessert_item.calculate_cost().item_cost} Tax: ${dessert_item.item_tax}')
         print(dessert_item.name, "%.2f" % dessert_item.calculate_cost(), "%.2f" % dessert_item.calculate_tax())
+
+    print("%.2f" % order.order_cost())
+    print("%.2f" % order.order_tax())
+    # print("%.2f" % order.get_total())
+
 
 user_selection = input("0 - complete order  \n1 - Add an additional item to order \n")
 
