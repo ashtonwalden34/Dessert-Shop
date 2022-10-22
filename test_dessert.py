@@ -19,6 +19,12 @@ def newIceCream():
 def newSundae():
   return Sundae("test", 2, 1.50, "test Sundae Topping", 2.00)
 
+def test_tax():
+  assert newCandy().tax_percent == 7.25
+  assert newCookie().tax_percent == 7.25
+  assert newIceCream().tax_percent == 7.25
+  assert newSundae().tax_percent == 7.25
+
 def test_Candy():
   # assert newCandy().name == "new Candy"
   assert newCandy().candy_weight == 2.00
@@ -39,3 +45,15 @@ def test_Sundae():
   assert newSundae().price_per_scoop == 1.50
   assert newSundae().topping_name == "test Sundae Topping"
   assert newSundae().topping_price == 2.00
+
+def test_cost():
+  assert newCandy().calculate_cost() == 2.00
+  assert newCookie().calculate_cost() == 5.00 * (3/12)
+  assert newIceCream().calculate_cost() == 3.00
+  assert newSundae().calculate_cost() == 5.00
+
+def test_tax():
+  assert newCandy().calculate_tax() == 2.00 * 0.0725
+  assert newCookie().calculate_tax() == (5.00 * (3/12)) * 0.0725
+  assert newIceCream().calculate_tax() == 3.00 * 0.0725
+  assert newSundae().calculate_tax() == 5.00 * 0.0725
