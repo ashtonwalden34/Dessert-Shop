@@ -56,6 +56,8 @@ def user_prompt_cookies():
         except ValueError:
             print("Cookie price must greater than 0.00")
 
+    verify_cookies(cookie_name, cookie_quantity, cookie_price)
+
 
 def user_prompt_icecream():
     icecream_name = input("Ice Cream Name:")
