@@ -11,6 +11,7 @@ def user_prompt_candy():
         candy_name = str(candy_name)
         candy_weight = int(candy_weight)
         candy_price = float(candy_price)
+
         try:
             if len(candy_name) > 0:
                 pass
@@ -27,14 +28,34 @@ def user_prompt_candy():
         except ValueError:
                 print("Candy price must be greater than 0.00.")
     
-    verify_candy()
+    verify_candy(candy_name, candy_weight, candy_price)
             
-
-
 def user_prompt_cookies():
     cookie_name = input("Cookie Name:")
     cookie_quantity = input("Quantity:")
     cookie_price = input("Price Per Dozen:")
+
+    def verify_cookies(cookie_name, cookie_quantity, cookie_price):
+        cookie_name = str(cookie_name)
+        cookie_quantity = int(cookie_quantity)
+        cookie_price = float(cookie_price)
+
+        try:
+            if len(cookie_name) > 0:
+                pass
+        except ValueError:
+            print("You must enter a name for the cookie.")
+        try:
+            if cookie_quantity > 0:
+                pass
+        except ValueError:
+            print("You must enter a quantity greater than 0 for the cookies.")
+        try:
+            if cookie_price > 0.00:
+                pass
+        except ValueError:
+            print("Cookie price must greater than 0.00")
+
 
 def user_prompt_icecream():
     icecream_name = input("Ice Cream Name:")
@@ -50,17 +71,3 @@ def user_prompt_sundae():
 
 main_menu()
 
-
-
-# *** OUTLINE FOR USER INPUT TO BE USED LATER ***
-# user_selection = input("0 - complete order  \n1 - Add an additional item to order \n")
-
-# def input_verify(user_selection):
-#     val = int(user_selection)
-#     try: 
-#         if val == 0 or val == 1:
-#             pass
-#     except ValueError:
-#         print("Invalid input, must enter a '0' or a '1'.")
-
-# input_verify(user_selection)
