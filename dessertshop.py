@@ -1,6 +1,20 @@
 def main_menu():
-    print(f"Add another item from the list to the order or press 'Enter' to complete order:" + 
-    "\n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae")
+    print(f"Add an item from the list to the order or press 'Enter' to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
+    menu_input = int(input())
+
+    if menu_input == 1:
+        user_prompt_candy()
+    elif menu_input == 2:
+        user_prompt_cookies()
+    elif menu_input == 3:
+        user_prompt_icecream()
+    elif menu_input == 4:
+        user_prompt_sundae()
+    elif menu_input == "":
+        pass
+        # order function where it prints out the order
+    else:
+        print("You must select an option from the menu")
 
 def user_prompt_candy():
     candy_name = input("Candy Name:")
