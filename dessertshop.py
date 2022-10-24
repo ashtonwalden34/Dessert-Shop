@@ -1,3 +1,5 @@
+from dessert import *
+
 def main_menu():
     print(f"Add an item from the list to the order or press 'Enter' to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
     menu_input = int(input())
@@ -43,6 +45,7 @@ def user_prompt_candy():
                 print("Candy price must be greater than 0.00.")
     
     verify_candy(candy_name, candy_weight, candy_price)
+    return(Candy(candy_name, candy_weight, candy_price))
             
 def user_prompt_cookies():
     cookie_name = input("Cookie Name:")
@@ -71,6 +74,7 @@ def user_prompt_cookies():
             print("Cookie price must greater than 0.00")
 
     verify_cookies(cookie_name, cookie_quantity, cookie_price)
+    return(Cookie(cookie_name, cookie_quantity, cookie_price))
 
 
 def user_prompt_icecream():
@@ -100,6 +104,7 @@ def user_prompt_icecream():
             print("Ice Cream price must be greater than 0.00.")
     
     verify_icecream(icecream_name, icecream_scoops, icecream_price)
+    return(IceCream(icecream_name, icecream_scoops, icecream_price))
 
 
 
@@ -144,6 +149,7 @@ def user_prompt_sundae():
             print("Topping price must be greater than 0.00.")
 
     verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
+    return(Sundae(icecream_name, icecream_scoops, icecream_scoops, topping_name, topping_price))
 
 main_menu()
 

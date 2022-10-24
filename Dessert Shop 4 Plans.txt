@@ -35,3 +35,20 @@ Test Cases
 	- No new test cases to add
 	- Run existing test cases and 
 		make sure they still pass
+
+
+--------------------------------------------
+Final To Do
+--------------------------------------------
+	main_menu()
+	  - return the order to the caller
+
+	submenus
+	  - create an object of the proper
+		input type
+	  - return new object to the caller
+
+	Test Cases
+	  - Run existing test cases = still
+		pass
+	
