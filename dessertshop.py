@@ -3,7 +3,9 @@ def main_menu():
     "\n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae")
 
 def user_prompt_candy():
-    pass
+    input("Candy Name:")
+    input("Weight (in lbs):")
+    input("Price per pound:")
 
 def user_prompt_cookies():
     pass
