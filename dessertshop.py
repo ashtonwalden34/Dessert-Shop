@@ -64,12 +64,72 @@ def user_prompt_icecream():
     icecream_scoops = input("Number Of Scoops:")
     icecream_price = input("Price Per Scoop:")
 
+    def verify_icecream(icecream_name, icecream_scoops, icecream_price):
+        icecream_name = str(icecream_name)
+        icecream_scoops = int(icecream_scoops)
+        icecream_price = float(icecream_price)
+
+        try:
+            if len(icecream_name) > 0:
+                pass
+        except ValueError:
+            print("Must enter a name for the ice cream.")
+        try:
+            if icecream_scoops > 0:
+                pass
+        except ValueError:
+            print("Ice Cream scoops must be greater than 0")
+        try:
+            if icecream_price > 0.00:
+                pass
+        except ValueError:
+            print("Ice Cream price must be greater than 0.00.")
+    
+    verify_icecream(icecream_name, icecream_scoops, icecream_price)
+
+
+
 def user_prompt_sundae():
     icecream_name = input("Ice Cream Name:")
     icecream_scoops = input("Number Of Scoops:")
     icecream_price = input("Price Per Scoop:")
     topping_name = input("Topping Name:")
     topping_price = input("Topping Price:")
+
+    def verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price):
+        icecream_name = str(icecream_name)
+        icecream_scoops = int(icecream_scoops)
+        icecream_price = int(icecream_price)
+        topping_name = str(topping_name)
+        topping_price = float(topping_price)
+
+        try:
+            if len(icecream_name) > 0:
+                pass
+        except ValueError:
+            print("Must enter a name for the ice cream.")
+        try:
+            if icecream_scoops > 0:
+                pass
+        except ValueError:
+            print("Ice Cream scoops must be greater than 0")
+        try:
+            if icecream_price > 0.00:
+                pass
+        except ValueError:
+            print("Ice Cream price must be greater than 0.00.")
+        try:
+            if topping_name > 0:
+                pass
+        except ValueError:
+            print("Must enter a name for the topping.")
+        try:
+            if topping_price > 0.00:
+                pass
+        except ValueError:
+            print("Topping price must be greater than 0.00.")
+
+    verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
 
 main_menu()
 
