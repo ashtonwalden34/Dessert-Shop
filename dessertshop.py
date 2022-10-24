@@ -5,15 +5,23 @@ def main_menu():
 def user_prompt_candy():
     input("Candy Name:")
     input("Weight (in lbs):")
-    input("Price per pound:")
+    input("Price Per Pound:")
 
 def user_prompt_cookies():
-    pass
+    input("Cookie Name:")
+    input("Quantity:")
+    input("Price Per Dozen:")
 
 def user_prompt_icecream():
-    pass
+    input("Ice Cream Name:")
+    input("Number Of Scoops:")
+    input("Price Per Scoop:")
 
 def user_prompt_sundae():
-    pass
+    input("Ice Cream Name:")
+    input("Number Of Scoops:")
+    input("Price Per Scoop:")
+    input("Topping Name:")
+    input("Topping Price:")
 
 main_menu()
