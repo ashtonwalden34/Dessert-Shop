@@ -7,6 +7,30 @@ def user_prompt_candy():
     candy_weight = input("Weight (in lbs):")
     candy_price = input("Price Per Pound:")
 
+    def verify_candy(candy_name, candy_weight, candy_price):
+        candy_name = str(candy_name)
+        candy_weight = int(candy_weight)
+        candy_price = float(candy_price)
+        try:
+            if len(candy_name) > 0:
+                pass
+        except ValueError:
+            print("You must enter a name for the candy.")
+        try:
+            if candy_weight > 0:
+                pass
+        except ValueError:
+                print("Invalid input, Candy Weight must be an number greater than 0.")
+        try:
+            if candy_price > 0.00:
+                pass
+        except ValueError:
+                print("Candy price must be greater than 0.00.")
+    
+    verify_candy()
+            
+
+
 def user_prompt_cookies():
     cookie_name = input("Cookie Name:")
     cookie_quantity = input("Quantity:")
@@ -26,8 +50,6 @@ def user_prompt_sundae():
 
 main_menu()
 
-def verify_input():
-    pass
 
 
 # *** OUTLINE FOR USER INPUT TO BE USED LATER ***
