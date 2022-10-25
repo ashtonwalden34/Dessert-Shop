@@ -104,6 +104,7 @@ class Order():
 
 def main():
     order = Order()
+    # order.add_dessert(Candy("test", 4.3, 3.4))
 
     print("Receipt \n---------------")
     for dessert_item in order.get_dessert():

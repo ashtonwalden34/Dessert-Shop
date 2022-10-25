@@ -46,8 +46,10 @@ def user_prompt_candy():
                 print("Candy price must be greater than 0.00.")
     
     verify_candy(candy_name, candy_weight, candy_price)
+    candy_obj = Candy(candy_name, candy_weight, candy_price)
+    order = Order()
+    order.add_dessert(candy_obj)
     main_menu()
-    return(Candy(candy_name, candy_weight, candy_price).add_to_order())
             
 def user_prompt_cookies():
     cookie_name = input("Cookie Name:")
@@ -106,7 +108,8 @@ def user_prompt_icecream():
             print("Ice Cream price must be greater than 0.00.")
     
     verify_icecream(icecream_name, icecream_scoops, icecream_price)
-    return(IceCream(icecream_name, icecream_scoops, icecream_price))
+    print(IceCream(icecream_name, icecream_scoops, icecream_price))
+    
 
 
 
