@@ -78,7 +78,10 @@ def user_prompt_cookies():
             print("Cookie price must greater than 0.00")
 
     verify_cookies(cookie_name, cookie_quantity, cookie_price)
-    return(Cookie(cookie_name, cookie_quantity, cookie_price))
+    cookie_obj = Cookie(cookie_name, cookie_quantity, cookie_price)
+    order = Order()
+    order.add_dessert(cookie_obj)
+    main_menu()
 
 
 def user_prompt_icecream():
@@ -108,10 +111,11 @@ def user_prompt_icecream():
             print("Ice Cream price must be greater than 0.00.")
     
     verify_icecream(icecream_name, icecream_scoops, icecream_price)
-    print(IceCream(icecream_name, icecream_scoops, icecream_price))
+    icecream_obj = IceCream(icecream_name, icecream_scoops, icecream_price)
+    order = Order()
+    order.add_dessert(icecream_obj)
+    main_menu()
     
-
-
 
 def user_prompt_sundae():
     icecream_name = input("Ice Cream Name:")
@@ -154,6 +158,9 @@ def user_prompt_sundae():
             print("Topping price must be greater than 0.00.")
 
     verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
-    return(Sundae(icecream_name, icecream_scoops, icecream_scoops, topping_name, topping_price))
+    sundae_obj = IceCream(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
+    order = Order()
+    order.add_dessert(sundae_obj)
+    main_menu()
 
 main_menu()
