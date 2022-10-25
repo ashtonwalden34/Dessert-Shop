@@ -13,7 +13,7 @@ def main_menu():
     elif menu_input == 4:
         user_prompt_sundae()
     elif menu_input == 0:
-        print("Order Completed")
+        # print("Order Completed")
         main()
         # order function where it prints out the order
     else:
@@ -127,7 +127,7 @@ def user_prompt_sundae():
     def verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price):
         icecream_name = str(icecream_name)
         icecream_scoops = int(icecream_scoops)
-        icecream_price = int(icecream_price)
+        icecream_price = float(icecream_price)
         topping_name = str(topping_name)
         topping_price = float(topping_price)
 
@@ -147,7 +147,7 @@ def user_prompt_sundae():
         except ValueError:
             print("Ice Cream price must be greater than 0.00.")
         try:
-            if topping_name > 0:
+            if len(topping_name) > 0:
                 pass
         except ValueError:
             print("Must enter a name for the topping.")
@@ -158,7 +158,7 @@ def user_prompt_sundae():
             print("Topping price must be greater than 0.00.")
 
     verify_sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
-    sundae_obj = IceCream(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
+    sundae_obj = Sundae(icecream_name, icecream_scoops, icecream_price, topping_name, topping_price)
     order = Order()
     order.add_dessert(sundae_obj)
     main_menu()

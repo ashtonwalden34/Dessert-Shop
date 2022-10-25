@@ -37,7 +37,7 @@ class Cookie(DessertItem):
         self.price_per_dozen = price_per_dozen
      #overriding abstract methods
     def calculate_cost(self):
-        cost = self.cookie_quantity * (self.price_per_dozen / 12)
+        cost = int(self.cookie_quantity) * (float(self.price_per_dozen) / 12)
         return(round(cost, 2))
     def calculate_tax(self):
         tax = self.calculate_cost() * (self.tax_percent / 100)
@@ -50,7 +50,7 @@ class IceCream(DessertItem):
         self.price_per_scoop = price_per_scoop
 
     def calculate_cost(self):
-        cost = self.scoop_count * self.price_per_scoop
+        cost = int(self.scoop_count) * float(self.price_per_scoop)
         return(round(cost, 2))
 
     def calculate_tax(self):
@@ -66,7 +66,7 @@ class Sundae(DessertItem):
         self.topping_price = topping_price
 
     def calculate_cost(self):
-        cost = (self.scoop_count * self.price_per_scoop) + self.topping_price
+        cost = (int(self.scoop_count) * float(self.price_per_scoop)) + float(self.topping_price)
         return(round(cost, 2))
 
     def calculate_tax(self):
