@@ -1,7 +1,7 @@
 from dessert import *
 
 def main_menu():
-    print(f"Add an item from the list to the order or press 'Enter' to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
+    print(f"Add an item from the list to the order or press 0 to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
     menu_input = int(input())
 
     if menu_input == 1:
@@ -12,20 +12,21 @@ def main_menu():
         user_prompt_icecream()
     elif menu_input == 4:
         user_prompt_sundae()
-    elif menu_input == "":
-        pass
+    elif menu_input == 0:
+        print("Order Completed")
+        main()
         # order function where it prints out the order
     else:
         print("You must select an option from the menu")
 
 def user_prompt_candy():
-    candy_name = input("Candy Name:")
-    candy_weight = input("Weight (in lbs):")
-    candy_price = input("Price Per Pound:")
+    candy_name = str(input("Candy Name:"))
+    candy_weight = float(input("Weight (in lbs):"))
+    candy_price = float(input("Price Per Pound:"))
 
     def verify_candy(candy_name, candy_weight, candy_price):
         candy_name = str(candy_name)
-        candy_weight = int(candy_weight)
+        candy_weight = float(candy_weight)
         candy_price = float(candy_price)
 
         try:
@@ -34,7 +35,7 @@ def user_prompt_candy():
         except ValueError:
             print("You must enter a name for the candy.")
         try:
-            if candy_weight > 0:
+            if candy_weight > 0.00:
                 pass
         except ValueError:
                 print("Invalid input, Candy Weight must be an number greater than 0.")
@@ -45,7 +46,8 @@ def user_prompt_candy():
                 print("Candy price must be greater than 0.00.")
     
     verify_candy(candy_name, candy_weight, candy_price)
-    return(Candy(candy_name, candy_weight, candy_price))
+    main_menu()
+    return(Candy(candy_name, candy_weight, candy_price).add_to_order())
             
 def user_prompt_cookies():
     cookie_name = input("Cookie Name:")
@@ -152,4 +154,3 @@ def user_prompt_sundae():
     return(Sundae(icecream_name, icecream_scoops, icecream_scoops, topping_name, topping_price))
 
 main_menu()
-
