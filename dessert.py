@@ -28,7 +28,11 @@ class Candy(DessertItem):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
     def add_to_order(self):
-        Order().add_dessert(Candy(self.name, self.candy_weight, self.price_per_pound))
+        # Order().add_dessert(Candy(self.name, self.candy_weight, self.price_per_pound))
+        Order().add_dessert(f'{self.name} \n {self.candy_weight}lbs @ ${self.price_per_pound}: ${self.calculate_cost()} [Tax: ${self.calculate_tax()}]').__str__()
+    def __str__(self):
+        return(f'{self.name} \n {self.candy_weight}lbs @ ${self.price_per_pound}: ${self.calculate_cost()} [Tax: ${self.calculate_tax()}]')
+
 
 class Cookie(DessertItem):
     def __init__(self, name, cookie_quantity = 0, price_per_dozen = 0.0):
@@ -77,7 +81,7 @@ class Order():
     def __init__(self, order = []):
         self.order = order
     def add_dessert(self, dessert_item):
-        assert isinstance(dessert_item, DessertItem)
+        # assert isinstance(dessert_item, DessertItem)
         self.order.append(dessert_item)
     def get_dessert(self):
         return self.get_by_type(DessertItem)
@@ -104,15 +108,20 @@ class Order():
 
 def main():
     order = Order()
-    # order.add_dessert(Candy("test", 4.3, 3.4))
+    order.add_dessert(Candy("test", 4.3, 3.4))
 
-    print("Receipt \n---------------")
+    # print("Receipt \n---------------")
+    # for dessert_item in order.get_dessert():
+    #     print(f"{dessert_item.name :18} $ {dessert_item.calculate_cost() : <7}Tax: $ {dessert_item.calculate_tax() : <5}")
+    # print ("--------------- \n--------------- \n---------------")
+    # print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
+    # print(f'Total: ${order.order_total()}')
+    # print('Item Total: ' + str(order.get_length()))
+
     for dessert_item in order.get_dessert():
-        print(f"{dessert_item.name :18} $ {dessert_item.calculate_cost() : <7}Tax: $ {dessert_item.calculate_tax() : <5}")
-    print ("--------------- \n--------------- \n---------------")
-    print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
-    print(f'Total: ${order.order_total()}')
-    print('Item Total: ' + str(order.get_length()))
+        print(dessert_item.__str__())
+
+    print(order)
 
 if __name__ == "__main__":
     main()
