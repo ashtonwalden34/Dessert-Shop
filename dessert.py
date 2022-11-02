@@ -31,7 +31,8 @@ class Candy(DessertItem):
         # Order().add_dessert(Candy(self.name, self.candy_weight, self.price_per_pound))
         Order().add_dessert(f'{self.name} \n {self.candy_weight}lbs @ ${self.price_per_pound}: ${self.calculate_cost()} [Tax: ${self.calculate_tax()}]').__str__()
     def __str__(self):
-        return(f'{self.name} \n {self.candy_weight}lbs @ ${self.price_per_pound}: ${self.calculate_cost()} [Tax: ${self.calculate_tax()}]')
+        return(f'{self.name} \n {self.candy_weight} lbs @ ${self.price_per_pound} per pound: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+        # return(f'{self.calculate_cost()}'.ljust(5, '$') + f'{self.calculate_tax()}')
 
 
 class Cookie(DessertItem):
@@ -46,20 +47,24 @@ class Cookie(DessertItem):
     def calculate_tax(self):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
+    def __str__(self):
+        return(f'{self.name} \n {self.cookie_quantity} @ ${self.price_per_dozen}/dozen: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+
 
 class IceCream(DessertItem):
     def __init__(self, name, scoop_count = 0, price_per_scoop = 0.0):
         super().__init__(name)
         self.scoop_count = scoop_count
         self.price_per_scoop = price_per_scoop
-
     def calculate_cost(self):
         cost = int(self.scoop_count) * float(self.price_per_scoop)
         return(round(cost, 2))
-
     def calculate_tax(self):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
+    def __str__(self):
+        return(f'{self.name} \n {self.scoop_count} scoops @ ${self.price_per_scoop}: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+
 
 class Sundae(DessertItem):
     def __init__(self, name, scoop_count, price_per_scoop, topping_name = "", topping_price = 0.0):
@@ -68,14 +73,16 @@ class Sundae(DessertItem):
         self.price_per_scoop = price_per_scoop
         self.topping_name = topping_name
         self.topping_price = topping_price
-
     def calculate_cost(self):
         cost = (int(self.scoop_count) * float(self.price_per_scoop)) + float(self.topping_price)
         return(round(cost, 2))
-
     def calculate_tax(self):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
+    def __str__(self):
+                return(f'{self.name} with {self.topping_name} \n {self.scoop_count} scoops @ ${self.price_per_scoop} with topping @ ${self.topping_price}: ${self.calculate_cost()}'.ljust(75, ' ') + f'[Tax: ${self.calculate_tax()}]')
+
+
 
 class Order():
     def __init__(self, order = []):
@@ -108,18 +115,17 @@ class Order():
 
 def main():
     order = Order()
-    order.add_dessert(Candy("test", 4.3, 3.4))
+    # order.add_dessert(Candy("test", 4.3, 3.4))
 
-    # print("Receipt \n---------------")
-    # for dessert_item in order.get_dessert():
-    #     print(f"{dessert_item.name :18} $ {dessert_item.calculate_cost() : <7}Tax: $ {dessert_item.calculate_tax() : <5}")
-    # print ("--------------- \n--------------- \n---------------")
-    # print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
-    # print(f'Total: ${order.order_total()}')
-    # print('Item Total: ' + str(order.get_length()))
-
+    print("Receipt \n---------------")
     for dessert_item in order.get_dessert():
         print(dessert_item.__str__())
+    print ("--------------- \n--------------- \n---------------")
+    print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
+    print(f'Total: ${order.order_total()}')
+    print('Item Total: ' + str(order.get_length()))
+
+
 
     print(order)
 
