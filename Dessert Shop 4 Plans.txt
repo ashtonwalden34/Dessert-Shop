@@ -1,0 +1,77 @@
+Add command line user interface 
+	- Make changes to dessertshop.py
+
+dessertshop module -> new functions
+	- main_menu()
+	- user_prompt_candy()
+	- user_prompt_cookie()
+	- user_prompt_icecream()
+	- user_prompt_sundae()
+
+-----------------------------------------
+main_menu()
+	- Present user a menu of options
+	- get user input
+	- validate input
+	- convert input values to the
+		proper type as needed
+	- call the correct submenu
+	- return the order to the caller
+
+submenus(candy, cookie, icecream, sundae)
+	- prompt user for enough input
+		to create the required
+		line item on the receipt
+	- get user input
+	- validate the input
+	- convert input values to proper
+		type as-needed
+	- create an object of the proper
+		input type
+	- return the newly created object
+		to the caller
+
+Test Cases
+	- No new test cases to add
+	- Run existing test cases and 
+		make sure they still pass
+
+
+--------------------------------------------
+Final To Do
+--------------------------------------------
+
+	Test Cases
+	  - Run existing test cases = still
+		pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def check_user_input(input):
+    try:
+        # Convert it into integer
+        val = int(input)
+        print("Input is an integer number. Number = ", val)
+    except ValueError:
+        try:
+            # Convert it into float
+            val = float(input)
+            print("Input is a float  number. Number = ", val)
+        except ValueError:
+            print("No.. input is not a number. It's a string")
+	
