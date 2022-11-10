@@ -1,0 +1,41 @@
+Problem
+------------------------------------------
+Feature that identifies what kind of packaging for a dessert item 
+(each item of a type will use same packaging)
+
+
+Add pure abstract base class that defines methods for setting packaging types for desserts
+Pure abstract base class (Mixin interface / Mixin type) adds operations to a type, but defers the implementation to concrete subclass
+------------------------------------------
+
+
+- New abstract base class in packaging.py
+
+------------------------------------------
+
+Packaging Interface
+
+	- 2 methods that define abstract
+		property packaging using
+		property decorator
+		(described in ABC module)
+		(Makes setter abstract method)
+	- Implement the __subclasshook__
+		magic method to be able to
+		test whether class is a
+		subclass of packaging
+
+
+Concrete Subclass of DessertItem 
+	- Set superclass packaging type in 
+		constructor, default val for
+		each type:
+		- Candy: packaging = "Bag"
+		- Cookie: packaging = "Box"
+		- IceCream: packaging = "Bowl"
+		- Sundae: packaging = "Boat"
+	- modify the __str__ magic method
+		to include packaging type as
+		show in example
+
+Ref

@@ -1,11 +1,18 @@
 from abc import ABC, abstractmethod
+from packaging import *
 
 class DessertItem(ABC):
-    def __init__(self, name="", tax_percent = 7.25):
+    # To Do
+        # add packaging property to class
+        # specify the getter and setter @property methods
+        # don't change constructor, you can make a dessert wiihout selecting packaging
+
+
+    def __init__(self, name="", tax_percent = 7.25, packaging = ""):
+    # def __init__(self, name="", tax_percent = 7.25, packaging = ""):
         self.name = name
         self.order = []
         self.tax_percent = tax_percent
-
     @abstractmethod
     def calculate_cost(self):
         pass
@@ -14,12 +21,25 @@ class DessertItem(ABC):
     def calculate_tax(self):
         pass
 
+    @abstractmethod
+    def __str__(self):
+        pass
+    
+    # @abstractmethod
+    # def packaging(Package):
+    #     # @property
+    #     # getter
+    #     # setter
+    #     # @packaging.setter
+
 
 class Candy(DessertItem):
-    def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00):
+    def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00, packaging = "Bag"):
+    # def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00, packaging = "Bag"):
         super().__init__(name)
         self.candy_weight = candy_weight
         self.price_per_pound = price_per_pound
+        self.packaging = packaging
     #overriding abstract methods?
     def calculate_cost(self):
         cost = self.candy_weight * self.price_per_pound
@@ -31,15 +51,17 @@ class Candy(DessertItem):
         # Order().add_dessert(Candy(self.name, self.candy_weight, self.price_per_pound))
         Order().add_dessert(f'{self.name} \n {self.candy_weight}lbs @ ${self.price_per_pound}: ${self.calculate_cost()} [Tax: ${self.calculate_tax()}]').__str__()
     def __str__(self):
-        return(f'{self.name} \n {self.candy_weight} lbs @ ${self.price_per_pound} per pound: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+        return(f'{self.name} ({self.packaging})\n {self.candy_weight} lbs @ ${self.price_per_pound} per pound: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
         # return(f'{self.calculate_cost()}'.ljust(5, '$') + f'{self.calculate_tax()}')
 
 
 class Cookie(DessertItem):
-    def __init__(self, name, cookie_quantity = 0, price_per_dozen = 0.0):
+    def __init__(self, name, cookie_quantity = 0, price_per_dozen = 0.0, packaging = "Box"):
+    # def __init__(self, name, cookie_quantity = 0, price_per_dozen = 0.0, packaging = "Box"):
         super().__init__(name)
         self.cookie_quantity = cookie_quantity
         self.price_per_dozen = price_per_dozen
+        self.packaging = packaging
      #overriding abstract methods
     def calculate_cost(self):
         cost = int(self.cookie_quantity) * (float(self.price_per_dozen) / 12)
@@ -48,14 +70,16 @@ class Cookie(DessertItem):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
     def __str__(self):
-        return(f'{self.name} \n {self.cookie_quantity} @ ${self.price_per_dozen}/dozen: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+        return(f'{self.name} ({self.packaging})\n {self.cookie_quantity} @ ${self.price_per_dozen}/dozen: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
 
 
 class IceCream(DessertItem):
-    def __init__(self, name, scoop_count = 0, price_per_scoop = 0.0):
+    def __init__(self, name, scoop_count = 0, price_per_scoop = 0.0, packaging = "Bowl"):
+    # def __init__(self, name, scoop_count = 0, price_per_scoop = 0.0, packaging = "Bowl"):
         super().__init__(name)
         self.scoop_count = scoop_count
         self.price_per_scoop = price_per_scoop
+        self.packaging = packaging
     def calculate_cost(self):
         cost = int(self.scoop_count) * float(self.price_per_scoop)
         return(round(cost, 2))
@@ -63,16 +87,18 @@ class IceCream(DessertItem):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
     def __str__(self):
-        return(f'{self.name} \n {self.scoop_count} scoops @ ${self.price_per_scoop}: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+        return(f'{self.name} ({self.packaging}) \n {self.scoop_count} scoops @ ${self.price_per_scoop}: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
 
 
 class Sundae(DessertItem):
-    def __init__(self, name, scoop_count, price_per_scoop, topping_name = "", topping_price = 0.0):
+    def __init__(self, name, scoop_count, price_per_scoop, topping_name = "", topping_price = 0.0, packaging = "Boat"):
+    # def __init__(self, name, scoop_count, price_per_scoop, topping_name = "", topping_price = 0.0, packaging = "Boat"):
         super().__init__(name)
         self.scoop_count = scoop_count
         self.price_per_scoop = price_per_scoop
         self.topping_name = topping_name
         self.topping_price = topping_price
+        self.packaging = packaging
     def calculate_cost(self):
         cost = (int(self.scoop_count) * float(self.price_per_scoop)) + float(self.topping_price)
         return(round(cost, 2))
@@ -80,7 +106,7 @@ class Sundae(DessertItem):
         tax = self.calculate_cost() * (self.tax_percent / 100)
         return(round(tax, 2))
     def __str__(self):
-                return(f'{self.name} with {self.topping_name} \n {self.scoop_count} scoops @ ${self.price_per_scoop} with topping @ ${self.topping_price}: ${self.calculate_cost()}'.ljust(75, ' ') + f'[Tax: ${self.calculate_tax()}]')
+                return(f'{self.name} with {self.topping_name} ({self.packaging})\n {self.scoop_count} scoops @ ${self.price_per_scoop} with topping @ ${self.topping_price}: ${self.calculate_cost()}'.ljust(75, ' ') + f'[Tax: ${self.calculate_tax()}]')
 
 
 

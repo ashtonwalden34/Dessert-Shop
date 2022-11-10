@@ -53,7 +53,13 @@ def test_cost():
   assert newSundae().calculate_cost() == 5.00
 
 def test_tax():
-  assert newCandy().calculate_tax() == 2.00 * 0.0725
-  assert newCookie().calculate_tax() == (5.00 * (3/12)) * 0.0725
-  assert newIceCream().calculate_tax() == 3.00 * 0.0725
-  assert newSundae().calculate_tax() == 5.00 * 0.0725
+  assert newCandy().calculate_tax() == 0.14
+  assert newCookie().calculate_tax() == 0.09
+  assert newIceCream().calculate_tax() == 0.22
+  assert newSundae().calculate_tax() == 0.36
+
+def test_packaging():
+  assert newCandy().packaging == "Bag"
+  assert newCookie().packaging == "Box"
+  assert newIceCream().packaging == "Bowl"
+  assert newSundae().packaging == "Boat"

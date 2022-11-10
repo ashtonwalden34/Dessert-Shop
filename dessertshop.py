@@ -28,7 +28,6 @@ def user_prompt_candy():
         candy_name = str(candy_name)
         candy_weight = float(candy_weight)
         candy_price = float(candy_price)
-
         try:
             if len(candy_name) > 0:
                 pass
