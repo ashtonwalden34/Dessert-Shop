@@ -1,0 +1,62 @@
+----------------------------------------------
+Problem
+----------------------------------------------
+ - Add payment method to an order
+	> Add abstract base class 'Payment'
+		-> Order class implements
+
+----------------------------------------------
+
+----------------------------------------------
+Payment Mixin Class
+----------------------------------------------
+Payment class
+	- specifies one property "pay_type"
+		> value is one of an Enum:
+			- CASH
+			- CARD
+			- PHONE
+		> Both readable and writable
+			in subclasses 
+			(Project 6 - Packaging)
+	- Needs to be Mixin
+		> Not all orders need a payment 
+			method property
+		> uses enum
+	- Defined in payment.py
+----------------------------------------------
+
+----------------------------------------------
+Changes
+----------------------------------------------
+Order Class
+	- Implement the payment interface
+	- Add attribute pay_method
+		has type PayType to implement
+		the interface
+	- In constructor, default val for
+		pay_method = CASH
+	- Add methods to implement interface
+		which makes payment method
+		readable and writable
+	- Modify __str__ method to include
+		payment method
+
+
+Main
+	- Add module-level function:
+		> prompts for payment type
+		> validates input
+		> returns payment type to calling 
+			code to set payment type
+			before order is printed
+	- Enums
+		> multiple ways to create
+		> Iterable
+		> comparable
+		> readable string representations
+
+
+Test Cases
+	- Add test cases for:
+		> payment type
