@@ -1,11 +1,13 @@
 import pytest
 import dessert
+import payment
 
 DessertItem = dessert.DessertItem 
 Candy = dessert.Candy
 Cookie = dessert.Cookie
 IceCream = dessert.IceCream
 Sundae = dessert.Sundae
+Pay_Method = dessert.Order
 
 def newCandy():
   return Candy("new Candy", 2.00, 1.00)
@@ -18,6 +20,9 @@ def newIceCream():
 
 def newSundae():
   return Sundae("test", 2, 1.50, "test Sundae Topping", 2.00)
+
+def newPayment():
+  return Pay_Method(0, 1)
 
 def test_tax():
   assert newCandy().tax_percent == 7.25
@@ -63,3 +68,6 @@ def test_packaging():
   assert newCookie().packaging == "Box"
   assert newIceCream().packaging == "Bowl"
   assert newSundae().packaging == "Boat"
+
+# def test_payment():
+#   assert newPayment() == 'CASH'

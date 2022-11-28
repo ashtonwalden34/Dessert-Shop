@@ -1,13 +1,8 @@
 from abc import ABC, abstractmethod
 from packaging import *
+from payment import Payment
 
 class DessertItem(ABC):
-    # To Do
-        # add packaging property to class
-        # specify the getter and setter @property methods
-        # don't change constructor, you can make a dessert wiihout selecting packaging
-
-
     def __init__(self, name="", tax_percent = 7.25, packaging = ""):
     # def __init__(self, name="", tax_percent = 7.25, packaging = ""):
         self.name = name
@@ -25,13 +20,12 @@ class DessertItem(ABC):
     def __str__(self):
         pass
     
-    # @abstractmethod
+    # @abstractproperty
     # def packaging(Package):
     #     # @property
     #     # getter
     #     # setter
     #     # @packaging.setter
-
 
 class Candy(DessertItem):
     def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00, packaging = "Bag"):
@@ -138,11 +132,16 @@ class Order():
         for index in range(len(self.order)):
             length += 1
         return(length)
+    def pay_method(self):
+        self.pay_method = Payment.pay_select()
+        return(self.pay_method)
+        
 
 def main():
     order = Order()
-    # order.add_dessert(Candy("test", 4.3, 3.4))
+    payment_mehtod = order.pay_method()
 
+    print("\n \n \n")
     print("Receipt \n---------------")
     for dessert_item in order.get_dessert():
         print(dessert_item.__str__())
@@ -150,10 +149,9 @@ def main():
     print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
     print(f'Total: ${order.order_total()}')
     print('Item Total: ' + str(order.get_length()))
-
-
-
-    print(order)
+    print ("---------------")
+    print(f'Paid with {payment_mehtod} \n \n \n')
+    # print(order)
 
 if __name__ == "__main__":
     main()

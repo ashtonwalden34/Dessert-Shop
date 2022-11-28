@@ -60,3 +60,57 @@ Main
 Test Cases
 	- Add test cases for:
 		> payment type
+
+
+
+
+
+
+Takes input then prints receipt, with card option
+
+	> press 0 = paymethod = > print
+main function 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
