@@ -1,8 +1,10 @@
 from dessert import *
+from payment import *
 
 def main_menu():
     print(f"Add an item from the list to the order or press 0 to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
     menu_input = int(input())
+    self = Payment
 
     if menu_input == 1:
         user_prompt_candy()
@@ -13,7 +15,8 @@ def main_menu():
     elif menu_input == 4:
         user_prompt_sundae()
     elif menu_input == 0:
-        # print("Order Completed")
+        # print(f"Enter a payment method:")
+        # pay_method = Order.pay_method(self)
         main()
         # order function where it prints out the order
     else:
