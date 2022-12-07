@@ -1,6 +1,7 @@
 import pytest
 import dessert
 import payment
+from functools import total_ordering
 
 DessertItem = dessert.DessertItem 
 Candy = dessert.Candy
@@ -71,3 +72,11 @@ def test_packaging():
 
 # def test_payment():
 #   assert newPayment() == 'CASH'
+
+@total_ordering
+def test_ordering():
+  assert newCandy().__lt__(newSundae()) == True
+  assert newCandy().__le__(newIceCream()) == True
+  assert newCandy().__gt__(newCookie()) == True
+  assert newIceCream().__ge__(newCookie()) == True
+  assert newSundae().__eq__(newIceCream()) == False

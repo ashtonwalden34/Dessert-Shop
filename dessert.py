@@ -31,23 +31,20 @@ class DessertItem(ABC):
 
     def _is_valid_operand(self, other):
         return (hasattr(other, "price_per_pound") or 
-            hasattr(other, "price_per_dozen") or
+            hasattr(other, "price_per_dozen") or 
             hasattr(other, "price_per_scoop") or
             hasattr(other, "topping_price"))
-            # hasattr(other, "calculate_cost"))
 
     def __eq__(self, other):
-        if not self._is_valid_operand(other):
-            return NotImplemented
-        return ((self.calculate_cost()) ==
-            (other.calculate_cost()))
+        # if not self._is_valid_operand(other):
+        #     return NotImplemented
+        return ((self.calculate_cost()) == (other.calculate_cost()))
 
     def __lt__(self, other):
-        if not self._is_valid_operand(other):
-            return NotImplemented
-        return ((self.calculate_cost()) <
-            (other.calculate_cost()))
-
+        # if not self._is_valid_operand(other):
+        #     return NotImplemented
+        return ((self.calculate_cost()) < (other.calculate_cost()))
+ 
 
 class Candy(DessertItem):
     def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00, packaging = "Bag"):
@@ -157,15 +154,30 @@ class Order():
     def pay_method(self):
         self.pay_method = Payment.pay_select()
         return(self.pay_method)
+    
+    # sort attempt
+    def sort(self):
+        sorted_order = []
+        i = 0
+        for item in self.order:
+            item.__lt__(self.order[i + 1])
+            sorted_order.append(item)
+
+
         
 
 def main():
     order = Order()
+    sort = order.sort()
     payment_mehtod = order.pay_method()
-
+    print(sort)
     print("\n \n \n")
     print("Receipt \n---------------")
+    # i = 0
     for dessert_item in order.get_dessert():
+        # sort
+        # dessert_item.__lt__(dessert_item)
+        # dessert_item.__lt__(order[i + 1])
         print(dessert_item.__str__())
     print ("--------------- \n--------------- \n---------------")
     print(f"Subtotal: ${order.order_cost()} Tax: ${order.order_tax() : <5}")
