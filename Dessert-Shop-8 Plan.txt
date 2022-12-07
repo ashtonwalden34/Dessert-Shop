@@ -1,0 +1,75 @@
+----------------------------------------------
+Problem
+----------------------------------------------
+Sort items on the receipt based on price
+	- least expensive (top) - most expensive
+		(bottom)
+
+----------------------------------------------
+
+----------------------------------------------
+Changes
+----------------------------------------------
+DessertItem class
+	- Decorate DessertItem with
+		@functools.total_ordering 
+		decorator
+	- is_valid_operand() helper method
+		referencing the price
+	- __eq__ and __lt__ operators using
+		price
+
+Main
+	- Sort dessert items in order
+		> after all items are added,
+			but before printed
+
+Test Cases
+	- Add test cases to test all the 
+		relational operators
+		(=, <, <=, >, >=)
+
+----------------------------------------------
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

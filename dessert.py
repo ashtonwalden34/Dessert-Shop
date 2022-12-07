@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from packaging import *
 from payment import Payment
+from functools import total_ordering
 
+@total_ordering
 class DessertItem(ABC):
     def __init__(self, name="", tax_percent = 7.25, packaging = ""):
     # def __init__(self, name="", tax_percent = 7.25, packaging = ""):
@@ -26,6 +28,27 @@ class DessertItem(ABC):
     #     # getter
     #     # setter
     #     # @packaging.setter
+
+    @total_ordering
+    def _is_valid_operand(self, other):
+        return (hasattr(other, "price_per_pound") or 
+            hasattr(other, "price_per_dozen") or
+            hasattr(other, "price_per_scoop") or
+            hasattr(other, "topping_price"))
+            # hasattr(other, "calculate_cost"))
+
+    def __eq__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return ((self.calculate_cost()) ==
+            (other.calculate_cost()))
+
+    def __lt__(self, other):
+        if not self._is_valid_operand(other):
+            return NotImplemented
+        return ((self.calculate_cost()) <
+            (other.calculate_cost()))
+
 
 class Candy(DessertItem):
     def __init__(self, name, candy_weight = 0.0, price_per_pound = 0.00, packaging = "Bag"):
