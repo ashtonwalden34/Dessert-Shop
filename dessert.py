@@ -29,7 +29,6 @@ class DessertItem(ABC):
     #     # setter
     #     # @packaging.setter
 
-    @total_ordering
     def _is_valid_operand(self, other):
         return (hasattr(other, "price_per_pound") or 
             hasattr(other, "price_per_dozen") or
