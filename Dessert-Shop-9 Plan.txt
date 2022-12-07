@@ -1,120 +1,104 @@
 ----------------------------------------------
 Problem
 ----------------------------------------------
-Sort items on the receipt based on price
-	- least expensive (top) - most expensive
-		(bottom)
+- Combine Items with the same name & price
+	> Only works for cookie and candy
+	> add together total weight & cost
 
-----------------------------------------------
+
+- Type errors are caught, checked at run time'
+
+- Type hints help manage complexity
+s
+- Define a SameItem interface
+	> will have a single predicate method
+		- is_same_as
+			> takes a generic type
+			  and returns True or False
+
+- Type Hints also support static analysis tools
+	> ex: mypy, finding errors in code
 
 ----------------------------------------------
 Changes
 ----------------------------------------------
-DessertItem class
-	- Decorate DessertItem with
-		@functools.total_ordering 
-		decorator
-	- is_valid_operand() helper method
-		referencing the price
-	- __eq__ and __lt__ operators using
-		price
 
-Main
-	- Sort dessert items in order
-		> after all items are added,
-			but before printed
+SameItem Interface
+	- Define abstract class SameItem
+
+	- Define predicate method
+		> is_same_as(self, other:T)->bool
+			- T is generic type var
+			- if same return True
+			- else return False
+
+
+Candy class
+	- Implement the SameItem interface
+	
+	- is_same_as(self, other: "Candy")
+		> returns True only if:
+			- other is inst of candy
+			- other has the same
+				- name
+				- price
+		> else returns false
+
+
+Cookie class
+	- Implement the SameItem interface
+	
+	- is_same_as(self, other: "Cookie")
+		> returns True only if:
+			- other is inst of candy
+			- other has the same
+				- name
+				- price
+		> else returns false
+
+
+Order class
+	- Several ways to search a collection,
+	and potentially combine, do what makes
+	sense
+
+   Ex 1: Mutually-exclusive checks
+	1. If new item is not Candy or Cookie, 
+		or is_same_as() returns false for
+		all items in order:
+			i. add new item to order
+
+	2. If new item is Candy,
+		i. find the first item that 
+		returns True for is_same_as()
+
+		ii. add the new item's weight to 
+		existing item
+
+	3. If new item is Cookie,
+		i. find the first item that 
+		returns True for is_same_as()
+
+		ii. add the new item's quantity 
+		to existing item
+
+
+   Ex 2: combine after order is created, but 
+	before printed using same constraints as
+	above
+	
 
 Test Cases
-	- Add test cases to test all the 
-		relational operators
-		(=, <, <=, >, >=)
+	- New Test cases to test is_same_as()
 
-----------------------------------------------
+	New Candy Tests
+		- one True is_same_as()
+		- one False is_same_as()
 
-
-	
-Main
-	> Arjun = student(8.6)
-	Ram = student(7.5)
-
-	print(Arjun.__lt__(Ram)
-		=> returns false
-
-	print(Arjun.__eq__(Ram)
-		=> returns false
-
-
-
-
-
-
-
-@total_ordering
-class Student:
-
-
-
-
-
-
-    def _is_valid_operand(self, other):
-        return (hasattr(other, "lastname") and
-                hasattr(other, "firstname"))
-
-
-
-    def __eq__(self, other):
-        if not self._is_valid_operand(other):
-            return NotImplemented
-        return ((self.lastname.lower(), self.firstname.lower()) ==
-                (other.lastname.lower(), other.firstname.lower()))
-
-
-
-
-    def __lt__(self, other):
-        if not self._is_valid_operand(other):
-            return NotImplemented
-        return ((self.lastname.lower(), self.firstname.lower()) <
-
-
-
-
-
-
-
-
-
-
-_lt__(), __le__(), __gt__(), or __ge__().
-
-
-
-
-
-
-
-
-
-
-change every thing to call it price()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	New Cookie Tests
+		- one True is_same_as()
+		- one False is_same_as()
+		
 
 
 
