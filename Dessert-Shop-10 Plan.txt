@@ -1,106 +1,37 @@
 ----------------------------------------------
 Problem
 ----------------------------------------------
-- Combine Items with the same name & price
-	> Only works for cookie and candy
-	> add together total weight & cost
+- Add ability to keep track of customers and what they have ordered
 
-
-- Type errors are caught, checked at run time'
-
-- Type hints help manage complexity
-s
-- Define a SameItem interface
-	> will have a single predicate method
-		- is_same_as
-			> takes a generic type
-			  and returns True or False
-
-- Type Hints also support static analysis tools
-	> ex: mypy, finding errors in code
+- Define a customer class
 
 ----------------------------------------------
 Changes
 ----------------------------------------------
 
-SameItem Interface
-	- Define abstract class SameItem
-
-	- Define predicate method
-		> is_same_as(self, other:T)->bool
-			- T is generic type var
-			- if same return True
-			- else return False
-
-
-Candy class
-	- Implement the SameItem interface
+Customer class (add to dessertshop mod)
+	- attributes:
+		> customer_name: str:
+		> order_history: List[Order]
+		> customer_id: int
+	- Constructor
+		> takes customer's name as param
+		> inits all other object attributes
 	
-	- is_same_as(self, other: "Candy")
-		> returns True only if:
-			- other is inst of candy
-			- other has the same
-				- name
-				- price
-		> else returns false
+	- Method add2history(order:order)->
+		- add the order to the history and
+		return customer object
 
-
-Cookie class
-	- Implement the SameItem interface
-	
-	- is_same_as(self, other: "Cookie")
-		> returns True only if:
-			- other is inst of candy
-			- other has the same
-				- name
-				- price
-		> else returns false
-
-
-Order class
-	- Several ways to search a collection,
-	and potentially combine, do what makes
-	sense
-
-   Ex 1: Mutually-exclusive checks
-	1. If new item is not Candy or Cookie, 
-		or is_same_as() returns false for
-		all items in order:
-			i. add new item to order
-
-	2. If new item is Candy,
-		i. find the first item that 
-		returns True for is_same_as()
-
-		ii. add the new item's weight to 
-		existing item
-
-	3. If new item is Cookie,
-		i. find the first item that 
-		returns True for is_same_as()
-
-		ii. add the new item's quantity 
-		to existing item
-
-
-   Ex 2: combine after order is created, but 
-	before printed using same constraints as
-	above
-	
+Main
+	- yes/no loop so program asks the user if
+		they want to start another order
+		after current order is printed
+		> y => enter = yes
+		> anything else = no
 
 Test Cases
-	- New Test cases to test is_same_as()
+	- Tests for customer class
+		> no test for order history
 
-	New Candy Tests
-		- one True is_same_as()
-		- one False is_same_as()
-
-	New Cookie Tests
-		- one True is_same_as()
-		- one False is_same_as()
+	
 		
-
-
-
-
-
