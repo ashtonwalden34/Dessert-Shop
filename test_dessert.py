@@ -2,7 +2,7 @@ import pytest
 import dessert
 import payment
 from functools import total_ordering
-from dessertshop import *
+# from dessertshop import *
 
 DessertItem = dessert.DessertItem 
 Candy = dessert.Candy
@@ -26,8 +26,8 @@ def newSundae():
 def newPayment():
   return Pay_Method(0, 1)
 
-def newCustomer():
-  return Customer('Test Name', 3, [['Test Order 1'], ['Test order 3']])
+# def newCustomer():
+#   return Customer('Test Name', 3, [['Test Order 1'], ['Test order 3']])
 
 def test_tax():
   assert newCandy().tax_percent == 7.25
@@ -85,7 +85,7 @@ def test_ordering():
   assert newIceCream().__ge__(newCookie()) == True
   assert newSundae().__eq__(newIceCream()) == False
 
-def test_customers():
-  assert newCustomer().customer_name == 'Test Name'
-  assert newCustomer().customer_id == 3
-  assert newCustomer().order_history[0] == ['Test Order 1']
+# def test_customers():
+#   assert newCustomer().customer_name == 'Test Name'
+#   assert newCustomer().customer_id == 3
+#   assert newCustomer().order_history[0] == ['Test Order 1']

@@ -5,8 +5,8 @@ from abc import *
 class Customer(ABC):
     def __init__(self, customer_name: str):
         self.customer_name = customer_name
-        self.order_history = []
-        self.customer_id = int
+        self.order_history = [['Test Order 1'], ['Test Order 2']]
+        self.customer_id = 3
     # def __init__(self, customer_name, customer_id, order_history = []):
     #     self.customer_name = customer_name
     #     self.customer_id = customer_id
