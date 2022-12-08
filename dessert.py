@@ -2,6 +2,16 @@ from abc import ABC, abstractmethod
 from packaging import *
 from payment import Payment
 from functools import total_ordering
+from typing import *
+
+
+T = TypeVar('T')
+class SameItem(ABC):
+    def is_same_as(self, other:T) -> bool:
+        if isinstance(other, self):
+            return(True)
+        else:
+            return(False)
 
 @total_ordering
 class DessertItem(ABC):
@@ -67,6 +77,12 @@ class Candy(DessertItem):
         return(f'{self.name} ({self.packaging})\n {self.candy_weight} lbs @ ${self.price_per_pound} per pound: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
         # return(f'{self.calculate_cost()}'.ljust(5, '$') + f'{self.calculate_tax()}')
 
+    def is_same_as(self, other: "Candy"):
+        if self.name == other.name and self.price_per_pound == other.price_per_pound:
+            self.candy_weight = self.candy_weight + other.candy_weight
+        else:
+            return(False)
+
 
 class Cookie(DessertItem):
     def __init__(self, name, cookie_quantity = 0, price_per_dozen = 0.0, packaging = "Box"):
@@ -84,6 +100,12 @@ class Cookie(DessertItem):
         return(round(tax, 2))
     def __str__(self):
         return(f'{self.name} ({self.packaging})\n {self.cookie_quantity} @ ${self.price_per_dozen}/dozen: ${self.calculate_cost()}'.ljust(50, ' ') + f'[Tax: ${self.calculate_tax()}]')
+
+    def is_same_as(self, other: "Cookie"):
+        if self.name == other.name and self.price_per_dozen == other.price_per_dozen:
+            self.candy_weight = self.cookie_quantity + other.cookie_quantity
+        else:
+            return(False)
 
 
 class IceCream(DessertItem):
@@ -120,7 +142,6 @@ class Sundae(DessertItem):
         return(round(tax, 2))
     def __str__(self):
                 return(f'{self.name} with {self.topping_name} ({self.packaging})\n {self.scoop_count} scoops @ ${self.price_per_scoop} with topping @ ${self.topping_price}: ${self.calculate_cost()}'.ljust(75, ' ') + f'[Tax: ${self.calculate_tax()}]')
-
 
 
 class Order():
@@ -163,8 +184,15 @@ class Order():
             item.__lt__(self.order[i + 1])
             sorted_order.append(item)
 
-
-        
+    # Combine Like Items
+    def combine(self, other):
+        for item in self.order():
+            if item.is_same_as(item, other): 
+                Candy.is_same_as(self, other="Candy")
+                Cookie.is_same_as(self, other="Cookie")
+                pass
+            else:
+                self.order.append(DessertItem)
 
 def main():
     order = Order()
