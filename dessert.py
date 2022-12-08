@@ -177,28 +177,28 @@ class Order():
         return(self.pay_method)
     
     # sort attempt
-    def sort(self):
-        sorted_order = []
-        i = 0
-        for item in self.order:
-            item.__lt__(self.order[i + 1])
-            sorted_order.append(item)
+    # def sort(self):
+    #     sorted_order = []
+    #     i = 0
+    #     for item in self.order:
+    #         item.__lt__(self.order[i + 1])
+    #         sorted_order.append(item)
 
-    # Combine Like Items
-    def combine(self, other):
-        for item in self.order():
-            if item.is_same_as(item, other): 
-                Candy.is_same_as(self, other="Candy")
-                Cookie.is_same_as(self, other="Cookie")
-                pass
-            else:
-                self.order.append(DessertItem)
+    # # Combine Like Items
+    # def combine(self, other):
+    #     for item in self.order():
+    #         if item.is_same_as(item, other): 
+    #             Candy.is_same_as(self, other="Candy")
+    #             Cookie.is_same_as(self, other="Cookie")
+    #             pass
+    #         else:
+    #             self.order.append(DessertItem)
 
 def main():
     order = Order()
-    sort = order.sort()
+    # sort = order.sort()
     payment_mehtod = order.pay_method()
-    print(sort)
+    # print(sort)
     print("\n \n \n")
     print("Receipt \n---------------")
     # i = 0

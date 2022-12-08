@@ -1,5 +1,35 @@
 from dessert import *
 from payment import *
+from abc import *
+
+class Customer(ABC):
+    def __init__(self, customer_name: str):
+        self.customer_name = customer_name
+        self.order_history = []
+        self.customer_id = int
+    # def __init__(self, customer_name, customer_id, order_history = []):
+    #     self.customer_name = customer_name
+    #     self.customer_id = customer_id
+    #     self.order_history = order_history
+
+    def add2history(Order):
+        Customer.order_history.append()
+        return(Customer)
+
+def customer_menu():
+    print('Would you like to start another order?')
+    new_order_input = str(input()).upper()
+    print('\n')
+    if new_order_input == 'Y':
+        print('Please enter your name:')
+        # name = str(input()).upper()
+        # customer_id = 1
+        # Customer(name, customer_id).add2history(Order)
+        # print(Customer.order_history[0])
+        main_menu()
+    else:
+        pass
+
 
 def main_menu():
     print(f"Add an item from the list to the order or press 0 to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")
@@ -18,6 +48,7 @@ def main_menu():
         # print(f"Enter a payment method:")
         # pay_method = Order.pay_method(self)
         main()
+        customer_menu()
         # order function where it prints out the order
     else:
         print("You must select an option from the menu")
