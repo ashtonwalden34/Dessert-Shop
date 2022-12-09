@@ -2,34 +2,50 @@ from dessert import *
 from payment import *
 from abc import *
 
-class Customer(ABC):
-    def __init__(self, customer_name: str):
-        self.customer_name = customer_name
-        self.order_history = [['Test Order 1'], ['Test Order 2']]
-        self.customer_id = 3
-    # def __init__(self, customer_name, customer_id, order_history = []):
+class Customer():
+    # def __init__(self, customer_name):
     #     self.customer_name = customer_name
-    #     self.customer_id = customer_id
-    #     self.order_history = order_history
+    #     self.order_history = []
+    #     self.customer_id = int
+    def __init__(self, customer_name, customer_id):
+        self.customer_name = customer_name
+        self.customer_id = customer_id
+        self.order_history = []
+        self.total_orders = 0
 
-    def add2history(Order):
-        Customer.order_history.append()
+    def add2history(customer_name, Customer):
+        customer_db.append()
         return(Customer)
 
+# customer_db: Dict[str, Customer]
+customer_db = {}
+
 def customer_menu():
+    global customer_db
+    # total_orders = len(Customer.order_history)
+    print('Please enter your name:')
+    name = str(input()).upper()
+    customer_id = len(customer_db)
+    # Customer.__setattr__(Customer, 'customer_id', customer_id)
+    print(f'Customer Name: {name}     Customer ID: {Customer(name, customer_id).customer_id}       Total Orders: ')
+
+    if name in customer_db:
+        # add order
+        # Customer.total_orders += 1
+        # print(Customer.total_orders)
+        pass
+    else:
+        customer_db[name] = (Customer(name, customer_id))	
+    # print(customer_db)
     print('Would you like to start another order?')
     new_order_input = str(input()).upper()
     print('\n')
+
+    # print(Customer.order_history[0])
     if new_order_input == 'Y':
-        print('Please enter your name:')
-        # name = str(input()).upper()
-        # customer_id = 1
-        # Customer(name, customer_id).add2history(Order)
-        # print(Customer.order_history[0])
         main_menu()
     else:
         pass
-
 
 def main_menu():
     print(f"Add an item from the list to the order or press 0 to complete order: \n 1. Candy\n 2. Cookies\n 3. Ice Cream\n 4. Sundae\n")

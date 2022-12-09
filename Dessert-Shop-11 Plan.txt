@@ -1,11 +1,28 @@
 ----------------------------------------------
 Problem
 ----------------------------------------------
-
+	- Add the ability to keep track of customers and what they have ordered
+		> store cusomter list and order history for each customer
 
 ----------------------------------------------
 Changes
 ----------------------------------------------
+dessertshop module
+	- module-level dictionary 
+		> customer_db: Dict[str, Customer]
+			- customer_name = key, Customer object = value
+
+
+Console Application User Input
+	- After the order is complete, ask for customer_name
+	- check to see if the customer is already in the customer_db
+		> if no, create new customer object and add to customer_db
+		> add the order to the customer name in the customer_db
+		> ask after finished adding items, but before payment type
+
+Receipt Output
+	- add divider line after the Receipt
+	- same line customer_name, customer_id, total number of orders
 
 
 		

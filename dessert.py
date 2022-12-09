@@ -214,6 +214,7 @@ def main():
     print ("---------------")
     print(f'Paid with {payment_mehtod} \n \n \n')
     # print(order)
+    print ("---------------")
 
 if __name__ == "__main__":
     main()
